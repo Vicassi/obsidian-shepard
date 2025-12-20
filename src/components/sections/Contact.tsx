@@ -22,7 +22,7 @@ export const Contact = () => {
                             <span className="text-zinc-600">escalar?</span>
                         </h2>
                         <BlurReveal className="text-lg text-zinc-400 mb-8 max-w-md" delay={0.2}>
-                            Agende uma sessão estratégica gratuita. Vamos analisar sua operação atual e mostrar onde estão os gargalos de crescimento.
+                            Agende uma sessão estratégica gratuita. Vamos analisar sua operação atual e mostrar onde estão os gargalos&nbsp;de&nbsp;crescimento.
                         </BlurReveal>
 
                         <div className="flex flex-col gap-4 text-zinc-500">
