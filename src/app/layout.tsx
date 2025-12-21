@@ -10,6 +10,30 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Vekaizen.™ // Soluções B2B",
   description: "Transformamos sua operação comercial com inteligência, tecnologia e growth marketing. Parceiros de crescimento focados em resultados práticos.",
+  openGraph: {
+    title: "Vekaizen.™ // Soluções B2B",
+    description: "Transformamos sua operação comercial com inteligência, tecnologia e growth marketing.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Vekaizen Hero",
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.png" },
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
