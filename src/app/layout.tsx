@@ -8,7 +8,6 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://agenciaautopago.netlify.app'), // Substitua pela sua URL final quando tiver o domínio próprio
   title: "Vekaizen.™ // Soluções B2B",
   description: "Transformamos sua operação comercial com inteligência, tecnologia e growth marketing. Parceiros de crescimento focados em resultados práticos.",
   openGraph: {
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.png" },
       { url: "/icon.png", sizes: "32x32", type: "image/png" },
     ],
     apple: [
