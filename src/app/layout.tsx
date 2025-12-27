@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vekaizen.com'),
   title: "Vekaizen.™ // Soluções B2B",
   description: "Transformamos sua operação comercial com inteligência, tecnologia e growth marketing. Parceiros de crescimento focados em resultados práticos.",
   openGraph: {
