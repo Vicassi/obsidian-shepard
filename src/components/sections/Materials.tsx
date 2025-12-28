@@ -73,8 +73,6 @@ export const Materials = () => {
                     <div className="flex flex-col gap-4 overflow-hidden select-none py-4">
                         {/* Row 1 */}
                         <motion.div
-                            drag="x"
-                            dragConstraints={{ left: -3000, right: 0 }}
                             animate={{
                                 x: [0, -2000],
                             }}
@@ -88,7 +86,7 @@ export const Materials = () => {
                             }}
                             className="flex flex-none whitespace-nowrap"
                         >
-                            <h2 className="text-2xl md:text-5xl font-black text-white/5 uppercase tracking-tighter cursor-grab active:cursor-grabbing">
+                            <h2 className="text-2xl md:text-5xl font-black text-white/5 uppercase tracking-tighter">
                                 {marqueeItems.join("")}
                                 {marqueeItems.join("")}
                             </h2>
@@ -96,8 +94,6 @@ export const Materials = () => {
 
                         {/* Row 2 - Opposite Direction */}
                         <motion.div
-                            drag="x"
-                            dragConstraints={{ left: -3000, right: 0 }}
                             animate={{
                                 x: [-2000, 0],
                             }}
@@ -111,7 +107,7 @@ export const Materials = () => {
                             }}
                             className="flex flex-none whitespace-nowrap"
                         >
-                            <h2 className="text-2xl md:text-5xl font-black text-white/5 uppercase tracking-tighter cursor-grab active:cursor-grabbing">
+                            <h2 className="text-2xl md:text-5xl font-black text-white/5 uppercase tracking-tighter">
                                 {marqueeItems.join("")}
                                 {marqueeItems.join("")}
                             </h2>

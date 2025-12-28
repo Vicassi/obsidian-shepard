@@ -53,26 +53,9 @@ export const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium text-zinc-400">Email Corporativo</label>
-                                    <Input id="email" type="email" placeholder="nome@empresa.com" className="bg-zinc-950 border-white/10 text-white placeholder:text-zinc-600 focus:border-accent" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="website" className="text-sm font-medium text-zinc-400">Site da Empresa <span className="text-zinc-600">(Opcional)</span></label>
-                                    <Input id="website" placeholder="www.suaempresa.com.br" className="bg-zinc-950 border-white/10 text-white placeholder:text-zinc-600 focus:border-accent" />
-                                </div>
-                            </div>
-
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="company" className="text-sm font-medium text-zinc-400">Nome da Empresa</label>
-                                    <Input id="company" placeholder="Sua empresa" className="bg-zinc-950 border-white/10 text-white placeholder:text-zinc-600 focus:border-accent" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="cnpj" className="text-sm font-medium text-zinc-400">CNPJ</label>
-                                    <Input id="cnpj" placeholder="00.000.000/0000-00" className="bg-zinc-950 border-white/10 text-white placeholder:text-zinc-600 focus:border-accent" />
-                                </div>
+                            <div className="space-y-2">
+                                <label htmlFor="email" className="text-sm font-medium text-zinc-400">Email</label>
+                                <Input id="email" type="email" placeholder="nome@empresa.com" className="bg-zinc-950 border-white/10 text-white placeholder:text-zinc-600 focus:border-accent" />
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
@@ -106,7 +89,7 @@ export const Contact = () => {
                                 <Textarea id="message" placeholder="Conte o contexto atual da sua empresa, como que nós podemos te ajudar." className="bg-zinc-950 border-white/10 text-white placeholder:text-zinc-600 focus:border-accent min-h-[120px]" />
                             </div>
 
-                            <Button className="w-full bg-accent text-black hover:bg-accent/90 h-12 text-base font-semibold animate-pulse-green" type="submit">
+                            <Button className="w-full bg-accent text-black hover:bg-accent/90 h-12 text-base font-medium rounded-full shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300" type="submit">
                                 Solicitar Diagnóstico <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                         </form>

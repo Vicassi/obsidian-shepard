@@ -29,17 +29,28 @@ export const Methodology = () => {
 
     return (
         <section id="metodologia" className="py-20 bg-zinc-950 border-t border-white/5 overflow-hidden">
-            {/* Marquee - Draggable and Slower */}
-            <div className="relative flex overflow-hidden cursor-grab active:cursor-grabbing select-none">
+            {/* Marquee - Optimized (No Drag, Fade Effect) */}
+            <div className="relative flex overflow-hidden select-none">
+                {/* Fade Overlays */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-950 to-transparent z-20 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-950 to-transparent z-20 pointer-events-none" />
+
                 <motion.div
-                    style={{ x: springX }}
-                    drag="x"
-                    dragConstraints={{ left: -3000, right: 0 }}
-                    onDragStart={() => setIsDragging(true)}
-                    onDragEnd={() => setIsDragging(false)}
-                    className="flex flex-none items-center gap-12 md:gap-24 py-8"
+                    animate={{
+                        x: ["-50%", "0%"], // seamless loop from half-way point back to start
+                    }}
+                    transition={{
+                        x: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 120, // Much slower speed to match other carousels
+                            ease: "linear",
+                        },
+                    }}
+                    className="flex flex-none items-center gap-12 md:gap-24 py-8 min-w-max"
                 >
-                    {[...Array(12)].map((_, i) => (
+                    {/* Render two sets of items for seamless looping */}
+                    {[...Array(8), ...Array(8)].map((_, i) => (
                         <div key={i} className="flex items-center gap-12 md:gap-24 text-4xl md:text-6xl font-black tracking-tighter text-transparent stroke-text opacity-10 uppercase pointer-events-none">
                             <span>Execução</span>
                             <span className="text-accent text-3xl md:text-5xl">✦</span>

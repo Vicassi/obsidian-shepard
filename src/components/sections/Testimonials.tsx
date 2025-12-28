@@ -50,8 +50,6 @@ export const Testimonials = () => {
                     {/* Infinite Carousel */}
                     <div className="flex overflow-hidden select-none">
                         <motion.div
-                            drag="x"
-                            dragConstraints={{ left: -2500, right: 0 }}
                             animate={{
                                 x: [0, -1500],
                             }}
@@ -63,7 +61,7 @@ export const Testimonials = () => {
                                     ease: "linear",
                                 },
                             }}
-                            className="flex flex-none gap-8 py-8 items-center cursor-grab active:cursor-grabbing"
+                            className="flex flex-none gap-8 py-8 items-center"
                         >
                             {[...testimonials, ...testimonials, ...testimonials].map((item, idx) => (
                                 <div

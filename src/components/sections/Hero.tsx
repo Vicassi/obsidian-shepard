@@ -23,8 +23,8 @@ export const Hero = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="max-w-5xl"
                 >
-                    <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-zinc-400 mb-8 backdrop-blur-sm">
-                        <Sparkles className="w-3 h-3 mr-2 text-accent" />
+                    <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-zinc-400 mb-8 backdrop-blur-md shadow-lg shadow-black/10">
+                        <Sparkles className="w-4 h-4 mr-2 text-accent" />
                         Engenharia de Vendas B2B
                     </div>
 
@@ -44,12 +44,12 @@ export const Hero = () => {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="#contact">
-                            <Button size="lg" className="bg-accent text-zinc-950 hover:bg-accent/90 min-w-[200px] text-base font-semibold h-12 animate-pulse-green">
+                            <Button size="lg" className="bg-accent text-zinc-950 hover:bg-accent/90 min-w-[200px] text-base font-medium h-12 rounded-full shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300">
                                 Começar Agora <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                         </Link>
                         <Link href="#clientes">
-                            <Button variant="outline" size="lg" className="border-white/10 bg-white/5 text-white hover:bg-white/10 min-w-[200px] h-12">
+                            <Button variant="outline" size="lg" className="border-white/10 bg-white/5 text-white hover:bg-white/10 min-w-[200px] h-12 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300">
                                 Ver Cases de Sucesso
                             </Button>
                         </Link>

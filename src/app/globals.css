@@ -116,6 +116,18 @@
   }
 
   --animate-pulse-green: pulse-green 2s infinite;
+  --animate-shine-logo: shine 0.8s ease-in-out;
+  --animate-shine-text: shine 1.5s ease-in-out infinite;
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
+
+    100% {
+      transform: translateX(200%) skewX(-15deg);
+    }
+  }
 }
 
 body {

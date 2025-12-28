@@ -52,20 +52,26 @@ export const ToolStack = () => {
                     </h2>
                 </div>
 
-                <div className="relative cursor-grab active:cursor-grabbing">
+                <div className="relative">
                     {/* Fade Overlays */}
                     <div className="absolute left-0 top-0 bottom-0 w-48 bg-gradient-to-r from-zinc-950 to-transparent z-20 pointer-events-none" />
                     <div className="absolute right-0 top-0 bottom-0 w-48 bg-gradient-to-l from-zinc-950 to-transparent z-20 pointer-events-none" />
 
-                    {/* Draggable Marquee Container */}
+                    {/* Infinite Marquee Container */}
                     <div className="flex overflow-hidden select-none">
                         <motion.div
-                            style={{ x: springX }}
-                            drag="x"
-                            dragConstraints={{ left: -3500, right: 0 }}
-                            onDragStart={() => setIsDragging(true)}
-                            onDragEnd={() => setIsDragging(false)}
-                            className="flex flex-none gap-10 py-8 items-center"
+                            animate={{
+                                x: ["0%", "-25%"], // Move exactly one set (1/4 of total)
+                            }}
+                            transition={{
+                                x: {
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    duration: 70, // Slower speed to match other carousels
+                                    ease: "linear",
+                                },
+                            }}
+                            className="flex flex-none gap-10 py-8 items-center min-w-max" // Added min-w-max to ensure full width calculation
                         >
                             {[...tools, ...tools, ...tools, ...tools].map((tool, idx) => (
                                 <div key={idx} className="flex-none group pointer-events-none px-2">

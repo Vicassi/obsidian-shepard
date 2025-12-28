@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,6 +19,14 @@ export const Header = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMousePos({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+        });
+    };
 
     const navLinks = [
         { name: "Início", href: "/" },
@@ -28,46 +37,69 @@ export const Header = () => {
 
     return (
         <header
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl transition-all duration-500 ${isScrolled
+            onMouseMove={handleMouseMove}
+            className={`fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl transition-all duration-500 group group/header ${isScrolled
                 ? "py-0"
                 : "py-2"
                 }`}
         >
-            <div className={`w-full px-4 md:px-6 py-2.5 flex items-center justify-between rounded-full border transition-all duration-500 shadow-2xl ${isScrolled
+            <div className={`relative w-full px-4 md:px-6 py-2.5 flex items-center justify-between rounded-full border transition-all duration-500 shadow-2xl overflow-hidden ${isScrolled
                 ? "bg-zinc-950/80 backdrop-blur-xl shadow-black/60 border-white/20"
                 : "bg-zinc-900/40 backdrop-blur-lg border-white/10"
                 }`}>
 
+                {/* Spotlight Effect */}
+                <div
+                    className="pointer-events-none absolute -inset-px opacity-0 group-hover/header:opacity-100 transition-opacity duration-300"
+                    style={{
+                        background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.06), transparent 40%)`
+                    }}
+                />
+
                 {/* Left: Logo */}
-                <div className="flex-1 flex justify-start">
-                    <Link href="/" className="flex items-center gap-3 md:gap-4 group">
+                <div className="flex-1 flex justify-start z-10">
+                    <Link href="/" className="flex items-center gap-3 md:gap-4 group relative">
                         <div className="relative">
-                            <Image
-                                src="/logo-vekaizen.png"
-                                alt="Vekaizen Logo"
-                                width={32}
-                                height={32}
-                                className="h-5 md:h-6 w-auto object-contain transition-all duration-500 group-hover:rotate-[360deg] group-hover:drop-shadow-[0_0_8px_rgba(204,255,0,0.6)] group-hover:brightness-0 group-hover:invert group-hover:sepia group-hover:saturate-[1000%] group-hover:hue-rotate-[40deg]"
-                            />
+                            <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                className="relative z-10"
+                            >
+                                <Image
+                                    src="/logo-vekaizen.png"
+                                    alt="Vekaizen Logo"
+                                    width={32}
+                                    height={32}
+                                    className="h-5 md:h-6 w-auto object-contain transition-all duration-500"
+                                />
+                            </motion.div>
+
+
                         </div>
-                        <Image
-                            src="/logo-text.png"
-                            alt="Vekaizen"
-                            width={120}
-                            height={24}
-                            className="h-4 md:h-5 w-auto brightness-110 transition-all duration-500 group-hover:brightness-0 group-hover:invert group-hover:sepia group-hover:saturate-[1000%] group-hover:hue-rotate-[40deg]"
-                        />
+
+                        <motion.div
+                            whileHover={{ x: 2 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                            <Image
+                                src="/logo-text.png"
+                                alt="Vekaizen"
+                                width={120}
+                                height={24}
+                                className="h-4 md:h-5 w-auto brightness-110 transition-all duration-500 group-hover:brightness-125"
+                            />
+                        </motion.div>
                     </Link>
                 </div>
 
                 {/* Center: Nav Links */}
-                <div className="hidden lg:flex flex-none">
-                    <nav className="flex items-center gap-6 bg-white/5 px-6 py-2 rounded-full border border-white/5">
+                <div className="hidden lg:flex flex-none z-10">
+                    <nav className="flex items-center gap-1 bg-white/5 px-2 py-1.5 rounded-full border border-white/5 backdrop-blur-2xl shadow-lg shadow-black/20">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-all duration-300 hover:scale-105"
+                                className="px-4 py-1.5 text-sm font-medium text-zinc-400 hover:text-white hover:bg-white/5 rounded-full transition-all duration-300 active:scale-95"
                             >
                                 {link.name}
                             </Link>
@@ -76,30 +108,51 @@ export const Header = () => {
                 </div>
 
                 {/* Right: Action Button */}
-                <div className="flex-1 flex justify-end items-center gap-2 md:gap-4">
+                <div className="flex-1 flex justify-end items-center gap-2 md:gap-4 z-10">
                     <Link href="#contact" className="relative group scale-90 md:scale-100">
-                        {/* Permanent Rotating Glow Effect */}
-                        <div className="absolute -inset-[2px] rounded-full overflow-hidden opacity-100 pointer-events-none">
-                            <motion.div
-                                animate={{
-                                    rotate: [0, 360],
-                                }}
-                                transition={{
-                                    duration: 4,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                }}
-                                className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#2997FF_360deg)]"
-                            />
-                        </div>
-
-                        <div className="relative flex items-center bg-black rounded-full px-1 pl-1 pr-1 border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
-                            <div className="bg-accent w-2 h-2 rounded-full mx-2 animate-pulse shadow-[0_0_8px_rgba(204,255,0,0.8)]"></div>
-                            <span className="text-white text-xs md:text-sm font-medium pr-3 py-2">Fale conosco</span>
-                            <div className="bg-white rounded-full p-1 group-hover:bg-zinc-200 transition-all duration-500">
-                                <ArrowUpRight className="w-3 h-3 text-black" />
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="relative"
+                        >
+                            {/* Blue Glow Border - Thicker and Rounded */}
+                            <div className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[2px]">
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#2997FF] to-[#2997FF] opacity-60" />
                             </div>
-                        </div>
+
+                            {/* High-End Laser Sweep Border - Thicker & Softer */}
+                            <div className="absolute -inset-[2px] rounded-full overflow-hidden">
+                                <motion.div
+                                    animate={{
+                                        rotate: [0, 360],
+                                    }}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    }}
+                                    className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_200deg,#2997FF_280deg,transparent_360deg)] opacity-100 group-hover:opacity-100 blur-[2px]"
+                                />
+                            </div>
+
+                            <div className="relative flex items-center bg-black rounded-full px-1 pl-1 pr-1 border border-white/10 group-hover:border-white/30 transition-all duration-500 overflow-hidden">
+                                <div className="bg-accent w-2 h-2 rounded-full mx-2 animate-pulse shadow-[0_0_10px_rgba(204,255,0,0.8)]"></div>
+
+                                <span className="relative text-white text-xs md:text-sm font-medium pr-3 py-2 overflow-hidden">
+                                    Fale conosco
+                                    {/* Subtle Text Shimmer */}
+                                    <motion.span
+                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shine-text"
+                                    />
+                                </span>
+
+                                <motion.div
+                                    className="bg-white rounded-full p-1 transition-all duration-500 group-hover:bg-accent group-hover:rotate-45"
+                                >
+                                    <ArrowUpRight className="w-3 h-3 text-black" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
                     </Link>
 
                     {/* Mobile Menu Toggle */}
