@@ -28,14 +28,14 @@ export const Hero = () => {
                         Engenharia de Vendas B2B
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 leading-tight">
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8 leading-tight">
                         Escale sua empresa com <br className="hidden md:block" />
                         <Typewriter
                             words={["Processos", "Dados", "Método", "Inteligência", "Previsibilidade", "Vekaizen"]}
                             defaultColor="text-white/50"
                             accentColor="text-accent"
                             accentWord="Vekaizen"
-                        /> <span className="text-accent mx-2 text-4xl md:text-6xl align-middle">✦</span> IA
+                        /><motion.span layout className="inline-flex items-center"><span className="text-accent mx-3 text-2xl sm:text-4xl md:text-6xl align-middle">✦</span> IA</motion.span>
                     </h1>
 
                     <BlurReveal className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed" delay={0.2} duration={0.8}>
@@ -202,46 +202,76 @@ export const Hero = () => {
 };
 
 const Typewriter = ({ words, defaultColor, accentColor, accentWord }: { words: string[], defaultColor: string, accentColor: string, accentWord: string }) => {
-    const [currentWordIndex, setCurrentWordIndex] = React.useState(0);
-    const [currentText, setCurrentText] = React.useState("");
+    const [index, setIndex] = React.useState(0);
+    const [subIndex, setSubIndex] = React.useState(0);
     const [isDeleting, setIsDeleting] = React.useState(false);
-    const [typingSpeed, setTypingSpeed] = React.useState(150);
 
     React.useEffect(() => {
-        const handleType = () => {
-            const fullText = words[currentWordIndex];
+        const currentWord = words[index];
 
-            if (isDeleting) {
-                setCurrentText(fullText.substring(0, currentText.length - 1));
-                setTypingSpeed(50); // Faster deleting
+        if (isDeleting) {
+            // Deleting mode: faster removal
+            if (subIndex > 0) {
+                const timeout = setTimeout(() => {
+                    setSubIndex((prev) => prev - 1);
+                }, 30);
+                return () => clearTimeout(timeout);
             } else {
-                setCurrentText(fullText.substring(0, currentText.length + 1));
-                setTypingSpeed(150); // Normal typing
-            }
-
-            if (!isDeleting && currentText === fullText) {
-                // Finished typing word, wait before deleting
-                setTimeout(() => setIsDeleting(true), 1500);
-            } else if (isDeleting && currentText === "") {
-                // Finished deleting, move to next word
+                // Finished deleting, switch to next word
                 setIsDeleting(false);
-                setCurrentWordIndex((prev) => (prev + 1) % words.length);
+                setIndex((prev) => (prev + 1) % words.length);
+                return;
             }
-        };
+        } else {
+            // Typing mode
+            if (subIndex < currentWord.length) {
+                const timeout = setTimeout(() => {
+                    setSubIndex((prev) => prev + 1);
+                }, 100); // Typing speed
+                return () => clearTimeout(timeout);
+            } else {
+                // Finished typing, wait before deleting
+                const timeout = setTimeout(() => {
+                    setIsDeleting(true);
+                }, 2000); // Pause at end of word
+                return () => clearTimeout(timeout);
+            }
+        }
+    }, [subIndex, isDeleting, index, words]);
 
-        const timer = setTimeout(handleType, typingSpeed);
-        return () => clearTimeout(timer);
-    }, [currentText, isDeleting, currentWordIndex, words, typingSpeed]);
-
-    const isAccent = words[currentWordIndex] === accentWord;
-    const glowClass = isAccent
-        ? "drop-shadow-[0_0_10px_rgba(204,255,0,0.5)]"
-        : "drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]";
+    const currentWord = words[index];
+    const isAccent = currentWord === accentWord;
+    const activeClass = isAccent ? accentColor : "text-white";
 
     return (
-        <span className={`${isAccent ? accentColor : defaultColor} ${glowClass} transition-all duration-300`}>
-            {currentText}
-            <span className="inline-block w-[3px] h-[1em] ml-1 bg-[#2997FF] rounded-full align-middle animate-pulse shadow-[0_0_12px_#2997FF]"></span>
-        </span>
+        <motion.span
+            layout
+            className="inline-flex items-center align-bottom"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+            <span className="relative inline-flex items-center">
+                {/* Active (Typed) Text */}
+                <span className={`${activeClass} transition-colors duration-300 ${isAccent ? "drop-shadow-[0_0_15px_rgba(204,255,0,0.5)]" : ""}`}>
+                    {currentWord.substring(0, subIndex)}
+                </span>
+
+                {/* Cursor & Ghost Text Container */}
+                <span className="relative">
+                    {/* Cursor */}
+                    <span className="absolute left-0 top-[10%] bottom-[10%] w-[2px] md:w-[3px] bg-[#2997FF] rounded-full animate-pulse shadow-[0_0_12px_#2997FF] z-10" />
+
+                    {/* Ghost Text with Blur Effect on Change */}
+                    <motion.span
+                        key={currentWord}
+                        initial={{ opacity: 0, filter: "blur(8px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        transition={{ duration: 0.3 }}
+                        className="text-white/20 ml-[2px]"
+                    >
+                        {currentWord.substring(subIndex)}
+                    </motion.span>
+                </span>
+            </span>
+        </motion.span>
     );
 };
