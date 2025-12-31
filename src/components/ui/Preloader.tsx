@@ -38,7 +38,7 @@ export const Preloader = () => {
                                     alt="Vekaizen Icon"
                                     width={64}
                                     height={64}
-                                    className="w-12 h-12 md:w-16 md:h-16 object-contain grayscale opacity-60 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                                    className="w-12 h-12 md:w-16 md:h-16 object-contain grayscale opacity-60 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] md:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                                 />
                             </motion.div>
                             <motion.div
@@ -51,7 +51,7 @@ export const Preloader = () => {
                                     alt="Vekaizen Text"
                                     width={180}
                                     height={40}
-                                    className="h-8 md:h-10 w-auto object-contain grayscale opacity-60 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                                    className="h-8 md:h-10 w-auto object-contain grayscale opacity-60 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] md:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                                 />
                             </motion.div>
                         </div>
@@ -70,7 +70,7 @@ export const Preloader = () => {
                                 delay: 0.5, // Faster reveal
                                 scale: { duration: 3, ease: "linear" } // Shortened drift to match 3s
                             }}
-                            className="text-zinc-500 font-medium tracking-widest text-sm md:text-base font-sans drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
+                            className="text-zinc-500 font-medium tracking-widest text-sm md:text-base font-sans drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
                         >
                             be more kaizen.
                         </motion.p>
