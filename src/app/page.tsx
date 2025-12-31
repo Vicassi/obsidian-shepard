@@ -10,10 +10,12 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { Certifications } from "@/components/sections/Certifications";
 import { ToolStack } from "@/components/sections/ToolStack";
+import { Preloader } from "@/components/ui/Preloader";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-zinc-950 overflow-x-hidden text-white selection:bg-accent selection:text-black">
+      <Preloader />
       <Header />
       <Hero />
       <ToolStack />

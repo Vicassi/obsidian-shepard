@@ -28,7 +28,7 @@ export const Methodology = () => {
     }, [isDragging, x]);
 
     return (
-        <section id="metodologia" className="py-20 bg-zinc-950 border-t border-white/5 overflow-hidden">
+        <section id="metodologia" className="py-8 bg-zinc-950 border-t border-white/5 overflow-hidden">
             {/* Marquee - Optimized (No Drag, Fade Effect) */}
             <div className="relative flex overflow-hidden select-none">
                 {/* Fade Overlays */}
@@ -47,7 +47,7 @@ export const Methodology = () => {
                             ease: "linear",
                         },
                     }}
-                    className="flex flex-none items-center gap-12 md:gap-24 py-8 min-w-max"
+                    className="flex flex-none items-center gap-12 md:gap-24 py-2 min-w-max"
                 >
                     {/* Render two sets of items for seamless looping */}
                     {[...Array(8), ...Array(8)].map((_, i) => (

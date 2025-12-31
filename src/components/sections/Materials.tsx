@@ -10,7 +10,7 @@ export const Materials = () => {
     const marqueeItems = Array(15).fill("Materiais & Consultoria • ");
 
     return (
-        <section className="py-24 bg-zinc-950 relative overflow-hidden">
+        <section className="py-12 bg-zinc-950 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -65,12 +65,12 @@ export const Materials = () => {
                 </div>
 
                 {/* Draggable/Animated Marquee with Fade and Two Layers */}
-                <div className="mt-24 relative">
+                <div className="mt-12 relative">
                     {/* Fade Overlays */}
                     <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-950 to-transparent z-20 pointer-events-none" />
                     <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-950 to-transparent z-20 pointer-events-none" />
 
-                    <div className="flex flex-col gap-4 overflow-hidden select-none py-4">
+                    <div className="flex flex-col gap-4 overflow-hidden select-none py-2">
                         {/* Row 1 */}
                         <motion.div
                             animate={{

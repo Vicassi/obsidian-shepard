@@ -43,7 +43,7 @@ export const ToolStack = () => {
     }, [isDragging, x]);
 
     return (
-        <section className="py-24 bg-zinc-950 relative overflow-hidden">
+        <section className="py-12 bg-zinc-950 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -71,7 +71,7 @@ export const ToolStack = () => {
                                     ease: "linear",
                                 },
                             }}
-                            className="flex flex-none gap-10 py-8 items-center min-w-max" // Added min-w-max to ensure full width calculation
+                            className="flex flex-none gap-10 py-4 items-center min-w-max" // Added min-w-max to ensure full width calculation
                         >
                             {[...tools, ...tools, ...tools, ...tools].map((tool, idx) => (
                                 <div key={idx} className="flex-none group pointer-events-none px-2">
