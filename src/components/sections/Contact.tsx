@@ -21,14 +21,14 @@ export const Contact = () => {
                             Pronto para <br />
                             <span className="text-zinc-600">escalar?</span>
                         </h2>
-                        <BlurReveal className="text-lg text-zinc-400 mb-8 max-w-md" delay={0.2}>
+                        <BlurReveal className="text-lg text-zinc-400 mb-8 max-w-xl" delay={0.2}>
                             Agende uma sessão estratégica gratuita. Vamos analisar sua operação atual e mostrar onde estão os gargalos&nbsp;de&nbsp;crescimento.
                         </BlurReveal>
 
                         <div className="flex flex-col gap-4 text-zinc-500">
-                            <p>contato@vekaizen.com</p>
-                            <p>São Paulo, Brasil</p>
-                            <div className="flex items-center gap-2 pt-2">
+                            <p className="border-b border-white/10 pb-1 w-fit">contato@vekaizen.com</p>
+                            <p className="border-b border-white/10 pb-1 w-fit">São Paulo, Brasil</p>
+                            <div className="flex items-center gap-2 pt-2 border-b border-white/10 pb-1 w-fit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /><path d="M8 8.5A2.5 2.5 0 0 0 10.5 11h.5a2.5 2.5 0 0 0 0-5H10.5A2.5 2.5 0 0 0 8 8.5" opacity="0" /><path d="M14.05 15.25a2.75 2.75 0 0 0 2.2-2.75V12.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.5a.5.5 0 0 0 .5.5h.5a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5h-.5a.5.5 0 0 1-.5-.5v-.5a.5.5 0 0 0-1 0v.5a1.5 1.5 0 0 0 1.5 1.5h.5a1.5 1.5 0 0 0 1.5-1.5z" opacity="0" /><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
                                 <span>+55 (11) 91558-1529</span>
                             </div>

@@ -29,8 +29,18 @@ export const Footer = () => {
 
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-xs text-zinc-600">
-                        © {new Date().getFullYear()} Vekaizen. Todos os direitos reservados.
+                        © 2026 Vekaizen. Todos os direitos reservados.
                     </p>
+
+                    {/* Developer Credits */}
+                    <div className="flex flex-col items-center gap-2">
+                        <span className="text-[10px] text-zinc-600 uppercase tracking-widest font-medium">Desenvolvido por</span>
+                        <div className="flex items-center gap-3 opacity-30 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+                            <Image src="/logo-vekaizen.png" alt="Vekaizen Logo" width={20} height={20} className="w-5 h-5 object-contain grayscale" />
+                            <Image src="/logo-text.png" alt="Vekaizen" width={80} height={16} className="h-4 w-auto grayscale" />
+                        </div>
+                    </div>
+
                     <div className="flex items-center gap-4">
                         <Link href="https://www.linkedin.com/company/vekaizen/" target="_blank" className="text-zinc-600 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></Link>
                         <Link href="https://www.instagram.com/vekaizen/" target="_blank" className="text-zinc-600 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></Link>

@@ -251,7 +251,7 @@ const Typewriter = ({ words, defaultColor, accentColor, accentWord }: { words: s
         >
             <span className="relative inline-flex items-center">
                 {/* Active (Typed) Text */}
-                <span className={`${activeClass} transition-colors duration-300 ${isAccent ? "drop-shadow-[0_0_15px_rgba(204,255,0,0.5)]" : ""}`}>
+                <span className={`${activeClass} transition-colors duration-300 ${isAccent ? "drop-shadow-[0_0_5px_rgba(204,255,0,0.5)] md:drop-shadow-[0_0_15px_rgba(204,255,0,0.5)]" : ""}`}>
                     {currentWord.substring(0, subIndex)}
                 </span>
 
